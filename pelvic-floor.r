@@ -1,14 +1,14 @@
 library(ggplot2)
 
 # r^{3.5}
-eqx35 = function(x){x^3.5 - 1}
+eqx35 = function(x){x^3.5}
 # linear r
-eqx  = function(x){x - 1}
+eqx  = function(x){x}
 # sqrt (r)
-eqsqrtx  = function(x){x^0.5 -1}
+eqsqrtx  = function(x){x^0.5}
 
 # Line plot with error bar
-p <- ggplot(data.frame(x=seq(1, 2, 0.1)), aes(x=x), ymin = 1.0) +
+p <- ggplot(data.frame(x=seq(0, 1, 0.1)), aes(x=x), ymin = 1.0) +
      stat_function(fun=eqx35,  geom="line", aes(colour = "x^3.5")) +
      stat_function(fun=eqx,  geom="line", linetype="dashed", aes(colour = "x")) +
      stat_function(fun=eqsqrtx,  geom="line", aes(colour = "sqrt(x)")) +
