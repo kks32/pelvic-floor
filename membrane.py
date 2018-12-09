@@ -1,14 +1,18 @@
 import math
+import csv
+
 def main():
+    data = [["r", "deflection"]]
+    x0 = 0
     for i in range(0, 101):
         E = 1E6    # Pa or N/m^2
         nu = 0.3   #
         r = 0.0575 * (1 + (i/100)) # m
-        t = 0.0094 # m
+        t = 0.0094 * (1 + (i/100))# m
         mass = 8.5 # kg
         area = math.pi * r * r
-        pressure = mass * 9.814 / area
-        P = 8031.18106 # Pa or N/m^2
+        pressure = (20 * 20 * 15 * 1.4) * (1 + (i/100)) * 9.814 / area
+        P = 8031.18106 * (1 + (i/100)) # Pa or N/m^2
         residual_stress = 391.66E3 #Pa
 
         alpha = E / (1 - nu)
@@ -17,7 +21,7 @@ def main():
         a = 8 * t * alpha / (3 * pow(r, 4))
         b = 0
         c = 4 * t * residual_stress / (r * r)
-        d = -P
+        d = -pressure
 
         # Solving for the real values of x in cubic
         D0 = -3 * a * c
@@ -26,7 +30,18 @@ def main():
         
         # Solving for deflection
         x = -1 / (3 * a) * (f + D0 / f) * 1000 #mm
-        print((1 + (i/100)), x)
+        
+        if i == 0:
+            x0 = x
+
+        xdiff = (x - x0)/x0 * 100
+        data.append([i, xdiff])
+
+    csvfile = open('effect-r.csv', 'w')
+    with csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerows(data)
+
         
 if __name__ == '__main__':
     main()
