@@ -13,11 +13,11 @@ eqx  = function(x){(((x)/100+1) - 1) * 100}
 
 # Line plot with error bar
 p <- ggplot(data.frame(x=seq(0, 100, 1)), aes(x=x), ymin = 1.0) +
-     stat_function(fun=eqx3.5,  geom="line", size = 1, linetype="dashed", aes(colour = "x^3.5")) +
-     stat_function(fun=eqx3,  geom="line", size = 1, linetype="dotdash", aes(colour = "x^3")) +
-     stat_function(fun=eqx2.5,  geom="line", aes(colour = "x^2.5")) +
-     stat_function(fun=eqx2,  geom="line", size = 1, linetype="longdash", aes(colour = "x^2")) +
-     stat_function(fun=eqx,  geom="line", size = 0.5, linetype="dashed", aes(colour = "x")) +
+     stat_function(fun=eqx3.5,  geom="line", size = 1, linetype="dashed", aes(colour = "f(r^3.5)")) +
+     stat_function(fun=eqx3,  geom="line", size = 1, linetype="dotdash", aes(colour = "f(r^3)")) +
+     stat_function(fun=eqx2.5,  geom="line", aes(colour = "f(r^2.5)")) +
+     stat_function(fun=eqx2,  geom="line", size = 1, linetype="longdash", aes(colour = "f(r^2)")) +
+     stat_function(fun=eqx,  geom="line", size = 0.5, linetype="dashed", aes(colour = "f(r)")) +
      scale_colour_manual("Functions", values = c("black", "red", "orange", "blue", "green")) +
      theme_bw() + scale_y_continuous(breaks = seq(0.0, 1200.0, 100.0)) + 
      # Specify axis labels
