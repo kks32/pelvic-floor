@@ -11,7 +11,7 @@ def main():
         E = 10E6   # Pa or N/m^2
         nu = 0.43  #
         r = 0.0575 * scaling # m
-        t = 0.00715 * scaling if (0.00715 * scaling) < 0.00748 else 0.00748# m
+        t = 0.00715 * scaling # m #if (0.00715 * scaling) < 0.00748 else 0.00748# m
         mass = 8.5 # kg
         area = math.pi * r * r
         # pressure = mass * 9.814 / area
