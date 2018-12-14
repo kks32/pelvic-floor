@@ -6459,7 +6459,7 @@ __PickedSurf4_SPOS, SPOS
 *Density
 1400.,
 *Hyperelastic, mooney-rivlin
-26000.,14000.,  0.05
+26000., 14000., 0.0005
 ** ----------------------------------------------------------------
 ** 
 ** STEP: Step-1
@@ -6480,7 +6480,7 @@ _PickedSet5, 3, 3
 ** 
 ** Name: Load-1   Type: Pressure
 *Dsload
-_PickedSurf4, P, 80.
+_PickedSurf4, P, 8031.
 ** 
 ** OUTPUT REQUESTS
 ** 
